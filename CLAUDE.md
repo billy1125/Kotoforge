@@ -121,7 +121,7 @@
 每篇論文一夾，所有編修工作檔都在各自 `papers/<title>/` 內；唯一跨論文共用的是根目錄 `writing-style/`。**實際論文夾與 `writing-style/` 內兩個 `sources/` 及蒸餾摘要是 git-ignored 的私人內容**（見 `.gitignore`）——只有 `_TEMPLATE/`、`style-defaults.md` 與各 README 進版控；使用者自己的稿件與筆法素材只留本機、不會出現在 `git status`，屬預期行為。
 
 ```
-scriptorium/
+kotoforge/
 ├── CLAUDE.md                 # 本檔，專案主指引（跨所有論文）
 ├── docs/SETUP.md             # 環境需求與 pandoc 疑難排解（見 §8）
 ├── .claude/skills/           # 8 個編修 skill（跨論文共用，各含 SKILL.md）
