@@ -3,7 +3,7 @@
 > 以 **Claude Code** 驅動的**資訊管理（IS／MIS）學術論文英文編修**工作台 — A **Claude Code–powered English copy-editing workbench** for **Information Systems (IS/MIS) academic manuscripts**. 逐段多版本潤稿、風格對齊目標期刊、引用查證，**只改英文、不動研究主張**。
 
 ![Claude Code](https://img.shields.io/badge/Claude%20Code-Skills-8A2BE2)
-![Skills](https://img.shields.io/badge/Skills-7-1857B6)
+![Skills](https://img.shields.io/badge/Skills-8-1857B6)
 ![Semantic Scholar](https://img.shields.io/badge/Semantic%20Scholar-MCP-1857B6)
 ![License: MIT](https://img.shields.io/badge/License-MIT-2E9E4F)
 ![Language](https://img.shields.io/badge/繁體中文%20%2B%20English-bilingual-2E9E4F)
@@ -28,7 +28,7 @@ Scriptorium helps Information Systems (IS/MIS) researchers bring the **English**
 ## ✨ 特色 / Features
 
 - **多論文佈局 / Multi-paper layout**：每篇論文各自一個 `papers/<title>/`，工作檔互不干擾。
-- **風格對齊 / Style calibration**：學習你本人筆法（跨論文共用）＋每篇目標期刊範文，產生該篇專屬 `style-guide.md`。
+- **風格對齊 / Style calibration**：三個共用風格區塊（個人筆法、學術英文原則、通用預設）＋每篇目標期刊範文，產生該篇專屬 `style-guide.md`。
 - **多版本校修 / Multi-version revision**：逐段給 ≤5 個可挑選、可回退的改法，不擅自大改，並提供「最小改動 vs 論述加厚」的密度選擇。
 - **可回退 / Reversible**：每次採用的版本都在該篇 `revisions/` 留底。
 - **引用查證 / Citation verification**：以 **Semantic Scholar MCP** 查證補齊 APA 書目，不憑記憶捏造。
@@ -38,7 +38,8 @@ Scriptorium helps Information Systems (IS/MIS) researchers bring the **English**
 
 | Skill | 用途 |
 |---|---|
-| `style-calibration` | 從筆法素材＋期刊範文萃取該篇 `style-guide.md` |
+| `personal-voice-calibration` | 從你本人的文章蒸餾個人筆法摘要，並產生該篇 `style-guide.md` |
+| `academic-principles-calibration` | 從你蒐集／整理的學術英文原則文件萃取共用規則摘要 |
 | `passage-revision` | 逐段英文校修，多版本供挑選（最常用） |
 | `section-review` | 一個範圍的整體彙整審閱，給修改方向 |
 | `source-document-extraction` | 從 `drafts/` 的 PDF／Word 抽正文建 `Manuscript.md` |
@@ -60,7 +61,7 @@ conda run -n research python -c "import fitz, pdfplumber, docx, mammoth, pypando
 2. 填 `Basic Information.md`（標題、作者、摘要、關鍵字、**目標期刊**）。
 3. 把原始論文（`.docx`／`.pdf`）放進該篇 `drafts/`。
 4. 請 Claude 用 `source-document-extraction` 抽出正文，建立該篇 `Manuscript.md`。
-5. （建議）把目標期刊範文放進該篇 `target-journal-samples/`，請 Claude 執行 `style-calibration` 產生 `style-guide.md`。
+5. （建議）設定共用風格區塊：把自己的文章放 `writing-style/personal-voice/sources/`、蒐集的寫作原則放 `writing-style/academic-principles/sources/`、把目標期刊範文放該篇 `target-journal-samples/`，請 Claude 執行 `personal-voice-calibration`（與 `academic-principles-calibration`）產生 `style-guide.md`。
 6. 開始逐段編修：指出段落與方向，用 `passage-revision` 挑版本；定稿前用 `final-consistency-sweep`、匯出用 `markdown-to-word`。
 
 完整步驟見 **[`docs/NEW-PAPER.md`](docs/NEW-PAPER.md)**。
@@ -70,10 +71,11 @@ conda run -n research python -c "import fitz, pdfplumber, docx, mammoth, pypando
 ```
 ├── CLAUDE.md              # AI 主指引（跨所有論文）
 ├── docs/                  # SETUP.md（環境）、NEW-PAPER.md（開新論文）
-├── .claude/skills/        # 7 個編修 skill（共用）
-├── writing-style/
-│   ├── style-defaults.md    # 預設風格基準（跨論文，進版控）
-│   └── my-writing-samples/  # 【共用】你本人的英文筆法素材（git-ignored 私人；僅 README 進版控）
+├── .claude/skills/        # 8 個編修 skill（共用）
+├── writing-style/           # 【共用】三個風格區塊
+│   ├── style-defaults.md    #   通用預設（可編輯範本，進版控）
+│   ├── personal-voice/      #   個人筆法：sources/＋personal-voice.md（git-ignored 私人；僅 README 進版控）
+│   └── academic-principles/ #   學術英文原則：sources/＋academic-principles.md（git-ignored 私人；僅 README 進版控）
 └── papers/
     ├── README.md         # 工作區說明（進版控）
     ├── _TEMPLATE/         # 新論文骨架，複製改名即可（進版控）

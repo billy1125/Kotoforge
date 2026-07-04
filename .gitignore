@@ -56,6 +56,16 @@ papers/*
 !papers/_TEMPLATE/
 !papers/README.md
 
-# 作者個人／第三方來源的筆法素材為私人內容；只保留說明
-writing-style/my-writing-samples/*
-!writing-style/my-writing-samples/README.md
+# 風格素材為私人內容（含蒸餾摘要）；只保留 README 與 sources 佔位檔
+# 個人筆法
+writing-style/personal-voice/*
+!writing-style/personal-voice/README.md
+!writing-style/personal-voice/sources/
+writing-style/personal-voice/sources/*
+!writing-style/personal-voice/sources/.gitkeep
+# 學術英文原則
+writing-style/academic-principles/*
+!writing-style/academic-principles/README.md
+!writing-style/academic-principles/sources/
+writing-style/academic-principles/sources/*
+!writing-style/academic-principles/sources/.gitkeep
