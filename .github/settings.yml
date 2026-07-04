@@ -1,0 +1,26 @@
+# GitHub repository metadata.
+# Auto-applied if the "Settings" GitHub App (https://github.com/apps/settings) is
+# installed on this repo; otherwise this file is just a durable record of the
+# intended About description and topics — set them manually under the repo's
+# "About" gear on the GitHub homepage.
+repository:
+  description: >-
+    Claude Code–powered English copy-editing workbench for Information Systems
+    (IS/MIS) academic papers — 資管學術論文英文編修工作台：逐段多版本潤稿、風格對齊期刊、
+    引用查證，只改英文不動研究主張。
+  homepage: ""
+  topics:
+    - claude-code
+    - claude-skills
+    - academic-writing
+    - academic-editing
+    - copy-editing
+    - english-editing
+    - proofreading
+    - manuscript-editing
+    - information-systems
+    - scholarly-writing
+    - journal-submission
+    - semantic-scholar
+    - research-tools
+    - ai-writing-assistant

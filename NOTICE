@@ -1,0 +1,28 @@
+Scriptorium
+Copyright (c) 2026 Cho-Hsun Lu (billy1125)
+
+This project is licensed under the MIT License (see LICENSE).
+
+Third-party acknowledgements
+============================
+
+Scriptorium does NOT bundle, copy, or adapt any third-party source code.
+It relies on the following external tools and services at runtime; each
+remains under its own license and is not redistributed in this repository:
+
+- Semantic Scholar — academic metadata (title, authors, year, DOI, venue)
+  used by the `citation-reference-management` skill to verify and complete
+  references. Data via the Semantic Scholar API (Allen Institute for AI).
+  https://www.semanticscholar.org/
+
+- semantic-scholar-mcp — MCP server invoked through `.mcp.json` to reach the
+  Semantic Scholar API. External dependency, not part of this repo.
+  https://github.com/akapet00/semantic-scholar-mcp
+
+- Pandoc — Markdown ⇄ Word (.docx) conversion (`markdown-to-word` skill).
+
+- Python libraries — PyMuPDF, pdfplumber, python-docx, mammoth, pypandoc
+  (`source-document-extraction` and `markdown-to-word` skills).
+
+Bibliographic metadata retrieved from Semantic Scholar is factual reference
+data about publications, used for citation verification only.
