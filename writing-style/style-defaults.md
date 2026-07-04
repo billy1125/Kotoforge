@@ -1,10 +1,12 @@
 # 英語風格預設基準（跨論文預設 style-guide）
 
+> **這是可編輯範本。** 本檔是通用預設基準，交由**使用者自行修改與擴充**——尤其下方「格式規範」段，可依你的習慣與目標期刊調整。AI 不會自動改寫本檔；要更新請直接編輯，或明說要調整哪一條。
+
 本檔是 `CLAUDE.md` §0 抽出的**資管（IS）論文通用預設**，等同「尚未產生該篇 `style-guide.md` 前的預設風格指引」。
 
 **優先順序：** 編修一律先以本檔為準；**一旦作用中論文的 `papers/<title>/style-guide.md` 產生，即改以它為準，衝突時該論文的 `style-guide.md` 優先。** 其中「隨期刊而異」的項目（拼寫變體、人稱），每篇開稿時應依目標期刊在該篇 `style-guide.md` 落定，未落定前套用下列預設值。
 
-> `passage-revision`、`section-review`、`style-calibration` 在找不到該篇 `style-guide.md` 時，以本檔為 fallback 基準。
+> `passage-revision`、`section-review`、`personal-voice-calibration` 在找不到該篇 `style-guide.md` 時，以本檔為 fallback 基準。個人筆法與學術英文原則的摘要分別由 `personal-voice-calibration`、`academic-principles-calibration` 維護。
 
 ## 通用原則（各篇多半一致）
 
@@ -19,3 +21,14 @@
 - **敘述人稱**：預設以研究為主詞的**客觀第三人稱**（the present study／this study），節制使用第一人稱 we／I；若期刊慣用 we 則放寬。
 - **標點**：預設使用**序列逗號（Oxford comma）**、以 em-dash 表插入語，全文一致。
 - **引用格式**：預設 **APA 7th**；依目標期刊實際要求調整。
+
+## 格式規範（可依你的習慣調整）
+
+> 這一段強化「格式一致性」，涵蓋標點、數字、術語大小寫、排版。定稿前由 `final-consistency-sweep` 逐項核對。以下為預設值，**請自行改成你或目標期刊的規範**。
+
+- **連字號 vs 破折號**：複合修飾語用連字號（`e-lifestyle`、`5-point`）；插入說明用 em-dash（—，前後無空格）；數字／年份區間用 en-dash（`20–29`、`2019–2021`，非 `-`）。
+- **數字與統計**：樣本數小寫斜體 `n = 278`；百分比數字緊接無空格 `42.4%`；統計值省略前導零 `p < .05`、`β = .32`（β／t／p 以斜體），但一般文字描述保留前導零 `0.3%`。
+- **圖表稱呼**：`Figure 1`、`Table 2`（非 Fig.、table）。
+- **斜體用法**：量表端點（*strongly disagree*）、期刊名稱、新技術術語首次出現。
+- **術語大小寫一致**：全文固定單一寫法（例：`FinTech` 不混用 `fintech`；理論名稱首字大小寫全文統一）。首次出現給全稱＋縮寫，其後用縮寫。
+- **清單樣式**：預設將短清單整合進散文（見 CLAUDE.md §6）；僅步驟性／逐條對應才保留條列。

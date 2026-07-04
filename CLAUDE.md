@@ -4,7 +4,7 @@
 
 > **這不是程式碼專案**：本 repo 沒有 build／test／lint 流程，也沒有應用程式可執行。工作產物是 Markdown 稿件（`Manuscript.md`）與 `revisions/` 留底；唯一的「指令」是 §8 的 conda／Pandoc 環境驗證與各 skill 內附的抽取／轉檔腳本。請勿去找不存在的測試或建置指令。查證引用透過 `.mcp.json` 設定的 **Semantic Scholar MCP server**（工具前綴 `mcp__semantic-scholar__*`），見 §4.5。
 
-> **作用中論文（active paper）**：所有編修工作檔——`Manuscript.md`、`Basic Information.md`、`progress.md`、`references.md`、`drafts/`、`revisions/`、`target-journal-samples/`、`style-guide.md`——都位於**某一篇論文的資料夾 `papers/<title>/` 內**。動手前先確認正在編修哪一篇；不明確時先問一句。本檔與各 skill 提到這些檔名時，除非另有標明，一律指**作用中論文資料夾內**的同名檔。唯一跨論文共用的是根目錄 `writing-style/my-writing-samples/`（作者本人筆法）。
+> **作用中論文（active paper）**：所有編修工作檔——`Manuscript.md`、`Basic Information.md`、`progress.md`、`references.md`、`drafts/`、`revisions/`、`target-journal-samples/`、`style-guide.md`——都位於**某一篇論文的資料夾 `papers/<title>/` 內**。動手前先確認正在編修哪一篇；不明確時先問一句。本檔與各 skill 提到這些檔名時，除非另有標明，一律指**作用中論文資料夾內**的同名檔。跨論文共用的是根目錄 `writing-style/`，內含三個各自獨立、可分別調整的區塊：**個人筆法** `personal-voice/`、**學術英文原則** `academic-principles/`、**通用預設** `style-defaults.md`（見 §3）。
 
 ---
 
@@ -12,7 +12,7 @@
 
 **預設基準已抽出至 [`writing-style/style-defaults.md`](writing-style/style-defaults.md)**（資管 IS 論文通用預設：語域、語態、時態、術語，以及隨期刊而異的英語變體／人稱／標點／引用格式）。
 
-**優先順序（記住這條即可）：** 編修先以 `style-defaults.md` 為準；**一旦作用中論文的 `papers/<title>/style-guide.md` 產生，即改以它為準，衝突時該篇 `style-guide.md` 優先。** 執行 `passage-revision`／`section-review`／`style-calibration` 前，先讀該篇 `style-guide.md`；不存在時以 `style-defaults.md` 為 fallback。
+**優先順序（記住這條即可）：** 編修先以 `style-defaults.md` 為準；**一旦作用中論文的 `papers/<title>/style-guide.md` 產生，即改以它為準，衝突時該篇 `style-guide.md` 優先。** 執行 `passage-revision`／`section-review`／`personal-voice-calibration` 前，先讀該篇 `style-guide.md`；不存在時以 `style-defaults.md` 為 fallback。`style-guide.md` 由 `personal-voice-calibration` 綜合三個共用風格區塊（個人筆法摘要、學術原則摘要、通用預設）與該篇期刊範文產生（見 §3）。
 
 ---
 
@@ -37,18 +37,20 @@
 
 ## 3. 參考素材（風格）
 
-編修品質取決於兩類參考素材。素材分為**跨論文共用**與**每篇論文獨立**兩層，因為作者本人的筆法一致、但每篇論文的目標期刊可能不同。**開始編修某篇論文前，若對應資料夾是空的，請主動提示使用者提供。**
+編修品質取決於參考素材。素材分為**跨論文共用**（根目錄 `writing-style/`，三個各自獨立的區塊）與**每篇論文獨立**（`papers/<title>/` 內）兩層。**開始編修某篇論文前，若共用區塊的摘要尚未產生或該篇資料夾是空的，請主動提示使用者提供（見下方 onboarding）。**
 
-| 位置 | 放什麼 | 層級 | 用途 |
+| 位置 | 放什麼 | 層級 | 由誰維護／用途 |
 |---|---|---|---|
-| `writing-style/my-writing-samples/` | 使用者過去寫過、已發表或滿意的英文論文／段落，或個人寫作指引 | **跨論文共用**（根目錄） | 學習使用者偏好的語氣與筆法，避免改成不像他的風格 |
-| `papers/<title>/target-journal-samples/` | 該篇目標期刊的範例文章（1–5 篇佳） | **每篇獨立** | 對齊該期刊的正式度、句構、慣用表達 |
-| `papers/<title>/style-guide.md` | **由 AI 維護**，從上面兩者萃取的風格指引 | **每篇獨立** | 該篇每次編修都依此為準 |
+| `writing-style/personal-voice/sources/` | 使用者**自己寫過**、已發表或滿意的英文論文／段落 | **跨論文共用** | 使用者放檔；`personal-voice-calibration` 蒸餾成 `personal-voice.md`（筆法 DNA） |
+| `writing-style/academic-principles/sources/` | 使用者**蒐集／整理**的學術英文寫作原則（教材、期刊指南、詞彙表；非本人文章） | **跨論文共用** | 使用者放檔；`academic-principles-calibration` 萃取成 `academic-principles.md`（規則摘要） |
+| `writing-style/style-defaults.md` | 通用預設風格基準（語域、時態、格式） | **跨論文共用** | **使用者自行編輯的範本**（無 skill；見 §0） |
+| `papers/<title>/target-journal-samples/` | 該篇目標期刊的範例文章（1–5 篇佳） | **每篇獨立** | 使用者放檔；對齊該期刊的正式度、句構、慣用表達 |
+| `papers/<title>/style-guide.md` | **由 AI 維護**，綜合上面四者的該篇風格指引 | **每篇獨立** | `personal-voice-calibration` 產生；該篇每次編修都依此為準 |
 
-**提示使用者的標準說法（資料夾為空時）：**
-> 要開始編修這篇前，建議先提供兩類素材：(1) 你過去寫的英文論文或寫作指引（放根目錄 `writing-style/my-writing-samples/`，所有論文共用），(2) 這篇目標期刊的範例文章（放 `papers/<這篇>/target-journal-samples/`）。我會讀過後為這篇整理出一份風格指引，之後的修改都會依它來做。沒有也可以先開始，但建議至少提供目標期刊範文。
+**首次使用引導（onboarding）：** 當 `writing-style/personal-voice/personal-voice.md` 或 `writing-style/academic-principles/academic-principles.md` **尚不存在**（或該篇 `target-journal-samples/` 為空）時，主動以下列標準說法提示使用者設定三個共用區塊；沒有也可先用 `style-defaults.md` 起步。
+> 要讓編修更貼近你，建議先設定三個共用風格區塊：(1) **個人筆法**——把你自己寫的英文論文放進 `writing-style/personal-voice/sources/`，我用 `personal-voice-calibration` 蒸餾成你的筆法摘要；(2) **學術英文原則**——把你蒐集或整理的寫作規則／教材／詞彙表放進 `writing-style/academic-principles/sources/`，我用 `academic-principles-calibration` 萃取成規則摘要；(3) **通用預設**——`writing-style/style-defaults.md` 是可編輯範本，你可直接改成自己的規範。另外，這篇的目標期刊範文請放 `papers/<這篇>/target-journal-samples/`。沒有也能先開始，但建議至少提供目標期刊範文。
 
-**定期更新：** 使用者新增或更換任何參考素材後，請執行 `style-calibration` skill 重新閱讀並更新該篇的 `papers/<title>/style-guide.md`。使用者也可隨時說「重新校準風格」來觸發。
+**定期更新：** 使用者在 `personal-voice/sources/` 或 `target-journal-samples/` 新增或更換素材後，執行 `personal-voice-calibration` 更新摘要與該篇 `style-guide.md`；在 `academic-principles/sources/` 有變動後，執行 `academic-principles-calibration` 更新規則摘要。也可隨時說「重新校準風格」「更新學術原則」來觸發。
 
 ---
 
@@ -60,7 +62,8 @@
 
 | Skill | 一句話用途 |
 |---|---|
-| `style-calibration` | 讀共用筆法素材＋該篇期刊範文，產生／更新該篇 `style-guide.md`（第一次設定或說「重新校準」時） |
+| `personal-voice-calibration` | 讀共用個人筆法素材（＋學術原則摘要、通用預設、該篇期刊範文），蒸餾 `personal-voice.md` 並產生／更新該篇 `style-guide.md`（原 `style-calibration`） |
+| `academic-principles-calibration` | 讀使用者蒐集／整理的學術英文原則文件，萃取成共用規則摘要 `academic-principles.md` |
 | `passage-revision` — 最常用 | 逐段校修，依該篇 `style-guide.md` 給 ≤5 版本供挑選、可回退 |
 | `section-review` | 指定一個範圍（一節／數段／全文）做整體彙整審閱，給修改方向而非直接大改 |
 
@@ -79,7 +82,7 @@
 
 ### 首次設定：為一篇論文建立資料夾與工作檔
 
-只在**開新論文**時做一次（複製 `_TEMPLATE/` → 放來源 → `source-document-extraction` 抽成 `Manuscript.md` → 建 `progress.md` → 選配 `style-calibration`）。**完整步驟與範例指令見 [`docs/NEW-PAPER.md`](docs/NEW-PAPER.md)。**
+只在**開新論文**時做一次（複製 `_TEMPLATE/` → 放來源 → `source-document-extraction` 抽成 `Manuscript.md` → 建 `progress.md` → 選配 `personal-voice-calibration`）。**完整步驟與範例指令見 [`docs/NEW-PAPER.md`](docs/NEW-PAPER.md)。**
 
 ### 日常編修循環（一律針對作用中論文的 `Manuscript.md`）
 
@@ -115,16 +118,19 @@
 
 ## 7. 目錄結構
 
-每篇論文一夾，所有編修工作檔都在各自 `papers/<title>/` 內；唯一跨論文共用的是根目錄 `writing-style/`。**實際論文夾與 `my-writing-samples/` 內容是 git-ignored 的私人內容**（見 `.gitignore`）——只有 `_TEMPLATE/`、`style-defaults.md` 與各 README 進版控；使用者自己的稿件與筆法素材只留本機、不會出現在 `git status`，屬預期行為。
+每篇論文一夾，所有編修工作檔都在各自 `papers/<title>/` 內；唯一跨論文共用的是根目錄 `writing-style/`。**實際論文夾與 `writing-style/` 內兩個 `sources/` 及蒸餾摘要是 git-ignored 的私人內容**（見 `.gitignore`）——只有 `_TEMPLATE/`、`style-defaults.md` 與各 README 進版控；使用者自己的稿件與筆法素材只留本機、不會出現在 `git status`，屬預期行為。
 
 ```
-scriptorium/
+kotoforge/
 ├── CLAUDE.md                 # 本檔，專案主指引（跨所有論文）
 ├── docs/SETUP.md             # 環境需求與 pandoc 疑難排解（見 §8）
-├── .claude/skills/           # 7 個編修 skill（跨論文共用，各含 SKILL.md）
-├── writing-style/            # 【跨論文共用】風格素材
-│   ├── style-defaults.md     #   預設風格基準（見 §0；進版控）
-│   └── my-writing-samples/   #   作者本人筆法素材（git-ignored 私人；僅 README 進版控）
+├── .claude/skills/           # 8 個編修 skill（跨論文共用，各含 SKILL.md）
+├── writing-style/            # 【跨論文共用】風格素材（三區塊）
+│   ├── style-defaults.md         #   通用預設（可編輯範本；見 §0；進版控）
+│   ├── personal-voice/           #   個人筆法：sources/（放自己文章）＋ personal-voice.md 摘要
+│   │                             #     （git-ignored 私人；僅 README＋sources/.gitkeep 進版控）
+│   └── academic-principles/      #   學術英文原則：sources/（放蒐集的規則）＋ academic-principles.md 摘要
+│                                 #     （git-ignored 私人；僅 README＋sources/.gitkeep 進版控）
 └── papers/                   # 【每篇一夾】
     ├── README.md             #   工作區說明（進版控）
     ├── _TEMPLATE/            #   範本骨架：開新論文複製此夾改名（進版控，含 revisions/_format.md）

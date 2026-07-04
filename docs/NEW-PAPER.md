@@ -11,4 +11,4 @@
      ```
    - `drafts/` 的原始檔**保留不動**，僅作對照與回溯來源；**不再直接編輯 `drafts/`**。
 4. **建立進度清單 `progress.md`**：在該篇資料夾建一份輕量編修進度表，逐章節標狀態（未動／進行中／已定稿），跨 session 一目了然。每次定稿後更新對應節（見 CLAUDE.md §5 日常編修循環最後一步）。
-5. **（建議）風格校準**：把目標期刊範文放進該篇 `target-journal-samples/`，執行 `style-calibration` 產生該篇 `style-guide.md`；未做前以 `writing-style/style-defaults.md` 的預設基準先行。
+5. **（建議）風格校準**：先設定跨論文共用的風格區塊——把自己的英文文章放 `writing-style/personal-voice/sources/`（執行 `personal-voice-calibration` 蒸餾 `personal-voice.md`）、把蒐集的學術英文原則放 `writing-style/academic-principles/sources/`（執行 `academic-principles-calibration` 萃取 `academic-principles.md`）；再把目標期刊範文放進該篇 `target-journal-samples/`，執行 `personal-voice-calibration` 產生該篇 `style-guide.md`。未做前以 `writing-style/style-defaults.md` 的預設基準先行。
