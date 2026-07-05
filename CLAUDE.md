@@ -2,7 +2,7 @@
 
 這份檔案是本專案的主指引。專案可**同時編修多篇論文**，每篇論文各自一個資料夾放在 `papers/<title>/` 底下（見 §3、§7）。每次協助編修前，請先讀過本檔、確認**作用中論文**（active paper），並載入該論文的 `papers/<title>/style-guide.md`（若存在）。
 
-> **這不是程式碼專案**：本 repo 沒有 build／test／lint 流程，也沒有應用程式可執行。工作產物是 Markdown 稿件（`Manuscript.md`）與 `revisions/` 留底；唯一的「指令」是 §8 的 conda／Pandoc 環境驗證與各 skill 內附的抽取／轉檔腳本。請勿去找不存在的測試或建置指令。查證引用透過 `.mcp.json` 設定的 **Semantic Scholar MCP server**（工具前綴 `mcp__semantic-scholar__*`），見 §4.5。
+> **這不是程式碼專案**：本 repo 沒有 build／test／lint 流程，也沒有應用程式可執行。工作產物是 Markdown 稿件（`Manuscript.md`）與 `revisions/` 留底；唯一的「指令」是 §8 的 conda／Pandoc 環境驗證與各 skill 內附的抽取／轉檔腳本。請勿去找不存在的測試或建置指令。查證引用透過 `.mcp.json` 設定的 **Semantic Scholar MCP server**（工具前綴 `mcp__semantic-scholar__*`），見 §4。
 
 > **作用中論文（active paper）**：所有編修工作檔——`Manuscript.md`、`Basic Information.md`、`progress.md`、`references.md`、`drafts/`、`revisions/`、`target-journal-samples/`、`style-guide.md`——都位於**某一篇論文的資料夾 `papers/<title>/` 內**。動手前先確認正在編修哪一篇；不明確時先問一句。本檔與各 skill 提到這些檔名時，除非另有標明，一律指**作用中論文資料夾內**的同名檔。跨論文共用的是根目錄 `writing-style/`，內含三個各自獨立、可分別調整的區塊：**個人筆法** `personal-voice/`、**學術英文原則** `academic-principles/`、**通用預設** `style-defaults.md`（見 §3）。
 
@@ -106,7 +106,7 @@
 
 - **英語等級**：約 CEFR B2 至 C1 水準，但是容易閱讀，不堆砌複雜文法、少見字、非學術慣用語、不必要之專有名詞。
 - **不過度改寫**：能用最小改動達到目的就不大改。保留作者原意與語序，除非語序本身造成英文不通順。
-- **清單預設整合進散文**：較短的編號清單預設改寫為段落內 inline 簡要列舉（每項極短描述），以省篇幅、降低列舉密度；僅「步驟性／逐條對應」的清單才保留條列。（如 §3.1、§3.2 的實作）
+- **清單預設整合進散文**：較短的編號清單預設改寫為段落內 inline 簡要列舉（每項極短描述），以省篇幅、降低列舉密度；僅「步驟性／逐條對應」的清單才保留條列。（如稿件 §3.1／§3.2 的實作）
 - **版本論述厚度階梯**：`passage-revision` 提供版本時，除文法／語氣軸外，明確提供「最小改動 vs 論述加厚」這條軸（例如 V1 最小改動、V2 論述加厚），讓使用者挑選想要的論述密度。
 - **跨段去重意識**：主動偵測同一概念跨段重複（含「先述後列」——散文先講、清單再列同一批點），以「⚠️ 觀察」提出去重／重整選項，**不自行刪改**。
 - **解釋要簡短**：每個版本附一句「為什麼這樣改／適合什麼情境」，不要長篇大論。
@@ -121,9 +121,9 @@
 每篇論文一夾，所有編修工作檔都在各自 `papers/<title>/` 內；唯一跨論文共用的是根目錄 `writing-style/`。**實際論文夾與 `writing-style/` 內兩個 `sources/` 及蒸餾摘要是 git-ignored 的私人內容**（見 `.gitignore`）——只有 `_TEMPLATE/`、`style-defaults.md` 與各 README 進版控；使用者自己的稿件與筆法素材只留本機、不會出現在 `git status`，屬預期行為。
 
 ```
-kotoforge/
+Kotoforge/
 ├── CLAUDE.md                 # 本檔，專案主指引（跨所有論文）
-├── docs/SETUP.md             # 環境需求與 pandoc 疑難排解（見 §8）
+├── docs/                     # SETUP.md（環境需求與 pandoc 疑難排解，見 §8）、NEW-PAPER.md（開新論文流程）
 ├── .claude/skills/           # 8 個編修 skill（跨論文共用，各含 SKILL.md）
 ├── writing-style/            # 【跨論文共用】風格素材（三區塊）
 │   ├── style-defaults.md         #   通用預設（可編輯範本；見 §0；進版控）

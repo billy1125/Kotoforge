@@ -73,5 +73,5 @@ cp .claude/settings.local.json.example .claude/settings.local.json
 ```
 
 - 運作方式：Claude Code 啟動時注入 `settings.local.json` 的 `env`，`.mcp.json` 裡的 `"${SEMANTIC_SCHOLAR_API_KEY:-}"` 即由此展開；`:-` 表示未設時預設空字串，故**免 key 仍可運作**。
-- **安全**：`.claude/settings.local.json` 已列入 `.gitignore`（第 37 行），**絕不要把真實 key 寫進 `.mcp.json`** 或任何進版控的檔案。
+- **安全**：`.claude/settings.local.json` 已列入 `.gitignore`，**絕不要把真實 key 寫進 `.mcp.json`** 或任何進版控的檔案。
 - 改完 `.mcp.json` 或 `settings.local.json` 後需**重啟 session** 才生效；用 `/mcp` 確認 `semantic-scholar` 連線狀態。

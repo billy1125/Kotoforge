@@ -12,6 +12,12 @@ cp -r papers/_TEMPLATE papers/<your-paper-slug>
 
 骨架已含空的 `Manuscript.md`、`Basic Information.md`、`progress.md`、`references.md`、`style-guide.md`，以及 `drafts/`、`target-journal-samples/`、`revisions/` 子夾。完整首次設定步驟見 [`../docs/NEW-PAPER.md`](../docs/NEW-PAPER.md)。
 
+## 作用中論文（active paper）
+
+同時編修多篇時，每個 session 都要先確認**正在編修哪一篇**。建議在下方維護一行，開場即可讓 Claude 據此載入該篇 `style-guide.md`；不確定時 Claude 會先問一句。
+
+> **目前主要編修：**（填 slug，例如 `technological-trust-recommendation-systems`）
+
 ## 版控說明（重要）
 
 **你實際編修的論文資料夾是私人內容，已被 [`.gitignore`](../.gitignore) 忽略、不進版控。** 這個 `papers/` 目錄裡**只有** `_TEMPLATE/`（骨架）與本 `README.md` 會進版控——所以你複製出來的 `papers/<your-paper-slug>/` 不會出現在 `git status`，這是預期行為，你的稿件只留在本機。
