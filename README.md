@@ -3,7 +3,7 @@
 > 以 **Claude Code** 驅動的**資訊管理（IS／MIS）學術論文英文編修**工作台 — A **Claude Code–powered English copy-editing workbench** for **Information Systems (IS/MIS) academic manuscripts**. 逐段多版本潤稿、風格對齊目標期刊、引用查證，**只改英文、不動研究主張**。
 
 ![Claude Code](https://img.shields.io/badge/Claude%20Code-Skills-8A2BE2)
-![Skills](https://img.shields.io/badge/Skills-8-1857B6)
+![Skills](https://img.shields.io/badge/Skills-9-1857B6)
 ![Semantic Scholar](https://img.shields.io/badge/Semantic%20Scholar-MCP-1857B6)
 ![License: MIT](https://img.shields.io/badge/License-MIT-2E9E4F)
 ![Language](https://img.shields.io/badge/繁體中文%20%2B%20English-bilingual-2E9E4F)
@@ -33,6 +33,7 @@ Kotoforge helps Information Systems (IS/MIS) researchers bring the **English** o
 - **可回退 / Reversible**：每次採用的版本都在該篇 `revisions/` 留底。
 - **引用查證 / Citation verification**：以 **Semantic Scholar MCP** 查證補齊 APA 書目，不憑記憶捏造。
 - **匯出 Word / Word export**：用 Pandoc 把 `Manuscript.md` 轉 `.docx`，可套期刊樣式範本。
+- **外部編修同步 / External-edit sync**：在 Word 改一輪後，把 `.docx` 與 `Manuscript.md` 段落級比對，逐塊裁定合併回稿件（先確認兩方檔案、不預設 docx 為準、可回退）。Round-trip changes edited in Word back into the manuscript, block by block.
 
 ## 🧩 內建 Skills
 
@@ -45,6 +46,7 @@ Kotoforge helps Information Systems (IS/MIS) researchers bring the **English** o
 | `source-document-extraction` | 從 `drafts/` 的 PDF／Word 抽正文建 `Manuscript.md` |
 | `citation-reference-management` | 引用一致性檢查、Semantic Scholar 查證補齊書目 |
 | `markdown-to-word` | 用 Pandoc 把 `Manuscript.md` 匯出為 `.docx` |
+| `docx-manuscript-sync` | 把在 Word 改過的 `.docx` 與 `Manuscript.md` 段落級比對，逐塊裁定後合併回稿件（先確認兩方檔案、可回退） |
 | `final-consistency-sweep` | 定稿／匯出前的全文一致性與校對掃描 |
 
 ## 🔧 環境需求 / Requirements
@@ -66,12 +68,32 @@ conda run -n research python -c "import fitz, pdfplumber, docx, mammoth, pypando
 
 完整步驟見 **[`docs/NEW-PAPER.md`](docs/NEW-PAPER.md)**。
 
+## 🗣️ 常用指令速查 / Command Cheatsheet
+
+> 這裡的「指令」**不是要輸入的程式或 slash 指令，而是你直接對 Claude 說的話**——Claude 會據此自動選用對應 skill。用詞不必照抄，講清楚「想做什麼、往哪個方向」即可。These are **plain-language requests**, not slash commands.
+
+| 想做的事 | 你可以這樣說 | 對應 skill／動作 |
+|---|---|---|
+| **切換／確認作用中論文** | 「切到 `<論文名>`」「現在編修的是哪一篇？」 | Claude 會**重新複習該篇** `style-guide.md`（含專屬規則）、`progress.md` 與近期 `revisions/`，並回一行確認後才動手 |
+| 逐段潤稿（最常用） | 「這段改得更正式／更簡潔／更強調貢獻」「給我最小改動與論述加厚兩版」 | `passage-revision`（≤5 版供挑選，可回退） |
+| 整節彙整審閱 | 「這一節整體看一下」「給我整體修改方向」 | `section-review` |
+| 校準個人筆法／更新風格 | 「重新校準風格」「更新我的筆法」 | `personal-voice-calibration`（更新該篇 `style-guide.md`） |
+| 更新學術英文原則 | 「更新學術英文原則」「整理我蒐集的寫作規則」 | `academic-principles-calibration` |
+| 抽取來源論文正文 | 「把 `drafts/` 的 PDF／Word 抽成 `Manuscript.md`」 | `source-document-extraction` |
+| 引用一致性／補書目 | 「檢查引用一致性」「用 Semantic Scholar 補齊書目」 | `citation-reference-management` |
+| 定稿前掃描 | 「定稿前掃一遍」「全文一致性檢查」「校對一下」 | `final-consistency-sweep`（出清單，不自行大改） |
+| 匯出 Word | 「匯出成 Word」「套期刊樣式轉 `.docx`」 | `markdown-to-word` |
+| **同步 Word 改動回稿件** | 「把我在 Word 改的同步回來」「比對這份 `.docx` 與 `Manuscript.md`」 | `docx-manuscript-sync`（會**先跟你確認是哪兩個檔**，再逐塊比對、由你裁定合併，可回退） |
+| 回退某段 | 「把這段改回上一版」 | 從該篇 `revisions/` 還原 |
+
+> 小提醒：修改方向可**並用**（例如「更正式＋論述加厚」）；每次採用的版本都會在該篇 `revisions/` 留底，隨時能回退。**多篇並行時，換論文請先用第一列的說法**，避免把 A 篇的規則套到 B 篇。
+
 ## 🗂️ 目錄結構 / Structure
 
 ```
 ├── CLAUDE.md              # AI 主指引（跨所有論文）
 ├── docs/                  # SETUP.md（環境）、NEW-PAPER.md（開新論文）
-├── .claude/skills/        # 8 個編修 skill（共用）
+├── .claude/skills/        # 9 個編修 skill（共用）
 ├── writing-style/           # 【共用】三個風格區塊
 │   ├── style-defaults.md    #   通用預設（可編輯範本，進版控）
 │   ├── personal-voice/      #   個人筆法：sources/＋personal-voice.md（git-ignored 私人；僅 README 進版控）

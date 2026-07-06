@@ -74,6 +74,7 @@
 | `source-document-extraction` | 把該篇 `drafts/` 的 `.docx`／`.pdf` 正文抽成 `Manuscript.md`（需 `research` 環境） |
 | `citation-reference-management` | 以 `references.md` 為準查引用一致性，用 **Semantic Scholar MCP**（`.mcp.json`，工具前綴 `mcp__semantic-scholar__*`）查證補齊 APA 書目（需 `research` 環境） |
 | `markdown-to-word` | 用 Pandoc 把 `Manuscript.md` 轉 `.docx`，可套期刊樣式 |
+| `docx-manuscript-sync` | 使用者在別的軟體（Word）改過的 `.docx` 與 `Manuscript.md` 段落級比對，逐塊呈現差異與建議、由使用者裁定合併回 md（留底），選配重匯 Word（需 `research` 環境；**不預設 docx 為準**） |
 | `final-consistency-sweep` | 定稿／匯出前全文一致性掃描（術語／時態／拼寫／連字號／數字／引用），出清單再用 `passage-revision` 落實 |
 
 ---
@@ -88,6 +89,12 @@
 
 先**確認作用中論文**（在哪個 `papers/<title>/`）；以下 `Manuscript.md`、`revisions/`、`progress.md` 均指該篇資料夾內的檔。
 
+0. **切換／確認作用中論文時必做的複習（switch-in ritual）**：每當 (a) 一個 session **第一次動手**，或 (b) 使用者**切換到另一篇** `papers/<title>/` 時，在下任何 Edit 前，必須先重新載入該篇專屬情境——**這些規則不得跨篇沿用**（縮寫清單、列舉法、術語大小寫、we 的用法等每篇可能不同）：
+   1. 讀該篇 `style-guide.md`，**特別是 §9 使用者手動補充／該篇新訂規則**。
+   2. 讀該篇 `progress.md`，確認各節狀態與待辦。
+   3. 掃最近 2–3 個該篇 `revisions/`，掌握最近決策與尚未處理的「⚠️ 觀察」。
+   4. 輸出一行確認再開始，例如：`已載入 <title>：style-guide（§9 規則 N 條）＋progress＋近 3 筆 revisions`。
+   （不確定使用者指的是哪一篇時，先問一句，見 §7、本檔開頭「作用中論文」說明。）
 1. **確認範圍與方向**：使用者指出 `Manuscript.md` 中要改哪一部分，以及方向（更流程/更正式／更簡潔／更強調貢獻／更口語等，可能同時有兩個以上的方向）。方向不明時，先問一句再動手。
 2. **動手前先重讀 live 文字**：以 `Manuscript.md` **當下內容**為準再產生建議或下 Edit。使用者常在回合之間自行手改稿件（採用某版後再微調、或改回別的措辭），`revisions/` 的快照可能落後於 live；**務必先 Read 目標段落、確認 old_string 對得上**，不要拿舊文字直接替換。
 3. **產生建議**：
@@ -124,7 +131,7 @@
 Kotoforge/
 ├── CLAUDE.md                 # 本檔，專案主指引（跨所有論文）
 ├── docs/                     # SETUP.md（環境需求與 pandoc 疑難排解，見 §8）、NEW-PAPER.md（開新論文流程）
-├── .claude/skills/           # 8 個編修 skill（跨論文共用，各含 SKILL.md）
+├── .claude/skills/           # 9 個編修 skill（跨論文共用，各含 SKILL.md）
 ├── writing-style/            # 【跨論文共用】風格素材（三區塊）
 │   ├── style-defaults.md         #   通用預設（可編輯範本；見 §0；進版控）
 │   ├── personal-voice/           #   個人筆法：sources/（放自己文章）＋ personal-voice.md 摘要
