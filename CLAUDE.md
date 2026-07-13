@@ -1,5 +1,7 @@
 # CLAUDE.md — 資訊管理學術論文英文編修專案
 
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+
 這份檔案是本專案的主指引。專案可**同時編修多篇論文**，每篇論文各自一個資料夾放在 `papers/<title>/` 底下（見 §3、§7）。每次協助編修前，請先讀過本檔、確認**作用中論文**（active paper），並載入該論文的 `papers/<title>/style-guide.md`（若存在）。
 
 > **這不是程式碼專案**：本 repo 沒有 build／test／lint 流程，也沒有應用程式可執行。工作產物是 Markdown 稿件（`Manuscript.md`）與 `revisions/` 留底；唯一的「指令」是 §8 的 conda／Pandoc 環境驗證與各 skill 內附的抽取／轉檔腳本。請勿去找不存在的測試或建置指令。查證引用透過 `.mcp.json` 設定的 **Semantic Scholar MCP server**（工具前綴 `mcp__semantic-scholar__*`），見 §4。
