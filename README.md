@@ -43,7 +43,7 @@ Kotoforge helps Information Systems (IS/MIS) researchers bring the **English** o
 | `academic-principles-calibration` | 從你蒐集／整理的學術英文原則文件萃取共用規則摘要 |
 | `passage-revision` | 逐段英文校修，多版本供挑選（最常用） |
 | `section-review` | 一個範圍的整體彙整審閱，給修改方向 |
-| `source-document-extraction` | 從 `drafts/` 的 PDF／Word 抽正文建 `Manuscript.md` |
+| `source-document-extraction` | 從 `drafts/` 的 PDF／Word 抽出文字，建立 Markdown 版本的草稿文件 `Manuscript.md` |
 | `citation-reference-management` | 引用一致性檢查、Semantic Scholar 查證補齊書目 |
 | `markdown-to-word` | 用 Pandoc 把 `Manuscript.md` 匯出為 `.docx` |
 | `docx-manuscript-sync` | 把在 Word 改過的 `.docx` 與 `Manuscript.md` 段落級比對，逐塊裁定後合併回稿件（先確認兩方檔案、可回退） |
