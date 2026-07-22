@@ -1,4 +1,4 @@
-Kotoforge
+Paperforgere
 Copyright (c) 2026 Cho-Hsun Lu (billy1125)
 
 This project is licensed under the MIT License (see LICENSE).
@@ -6,7 +6,7 @@ This project is licensed under the MIT License (see LICENSE).
 Third-party acknowledgements
 ============================
 
-Kotoforge does NOT bundle, copy, or adapt any third-party source code.
+Paperforgere does NOT bundle, copy, or adapt any third-party source code.
 It relies on the following external tools and services at runtime; each
 remains under its own license and is not redistributed in this repository:
 
